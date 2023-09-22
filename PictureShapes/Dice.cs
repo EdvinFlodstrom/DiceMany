@@ -11,15 +11,15 @@ namespace PictureShapes
         private static Random numberGenerator = new Random();
         private int number;
 
-        private int dotSize = 15;
+        private int dotSize = 20;
         private int minSize = 2;
         private int size;
-        private int xPosition = 350;
-        private int yPosition = -150;
+        private int xPosition = 10;
+        private int yPosition = -10;
         Circle[] dots = new Circle[7];
         Square[] backgrounds = new Square[2];       
 
-        private int Size
+        public int Size
         {
             get
             {
@@ -46,7 +46,7 @@ namespace PictureShapes
             }
         }
 
-        private int XPosition
+        public int XPosition
         {
             get
             {                
@@ -57,7 +57,7 @@ namespace PictureShapes
                 xPosition = value;
             }
         }
-        private int YPosition
+        public int YPosition
         {
             get
             {
@@ -71,9 +71,12 @@ namespace PictureShapes
 
         public Dice()
         {
-            size = dotSize * 6;
+            size = dotSize * 6;            
+        }
+        public void MakeDice()
+        {
             DrawDice();
-            
+
             foreach (Square item in backgrounds)
             {
                 item.XPosition += XPosition;
@@ -81,11 +84,10 @@ namespace PictureShapes
             }
 
             foreach (Circle item in dots)
-            {                
+            {
                 item.XPosition += XPosition;
                 item.YPosition -= YPosition;
             }
-            
         }
         public void Roll()
         {

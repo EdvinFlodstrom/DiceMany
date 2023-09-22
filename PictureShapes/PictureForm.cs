@@ -12,7 +12,8 @@ namespace PictureShapes
 {
     public partial class PictureForm : Form
     {
-        private Dice dice;
+        private Dice[] dice = new Dice[5];        
+        
 
         public PictureForm()
         {
@@ -24,13 +25,25 @@ namespace PictureShapes
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            dice = new Dice();
+            //dice = new Dice();
+            for (int i = 0; i < dice.Length; i++)
+            {
+                dice[i] = new Dice();
+                dice[i].Size = 15;
+                dice[i].XPosition = i * dice[i].Size * 7 + 20;
+                dice[i].MakeDice();
+            }
+            
         }
 
         private void btnDraw_Click(object sender, EventArgs e)
         {
             canvas.Clear();
-            dice.Roll();
+            //dice.Roll();
+            for (int i = 0; i < dice.Length; i++)
+            {
+                dice[i].Roll();                
+            }
         }
     }
 }
